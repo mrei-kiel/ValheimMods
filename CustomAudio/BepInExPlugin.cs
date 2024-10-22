@@ -153,8 +153,8 @@ namespace CustomAudio
             if (path.EndsWith(".txt") || !path.Contains("."))
                 return;
 
-            Dbgl($"path: {path}");
             path = "file:///" + path.Replace("\\", "/");
+            Dbgl($"path: {path}");
             /*
             try
             {
@@ -171,7 +171,7 @@ namespace CustomAudio
 
             try
             {
-                var www = UnityWebRequestMultimedia.GetAudioClip(path, audioType);
+                var www = UnityWebRequestMultimedia.GetAudioClip(UnityWebRequest.EscapeURL(path), audioType);
                 www.SendWebRequest();
                 while (!www.isDone)
                 {
